@@ -1,0 +1,29 @@
+<DOCTYPE html>
+<html>
+<head>
+	<title>Data Mahasiswa</title>
+	<script src="jquery.js"></script>
+	
+</head>
+<body>
+	<h1>Web Service</h1>
+	<hr>
+	<button onclick="wsconsume()">Show Data Mahasiswa</button><br><br>
+    <div id="view"></div>
+    <script src="./jquery.js"></script>
+    <script>
+      function wsconsume(){
+        $.getJSON("http://localhost:8080/datamahasiswa/json", function(res){
+          console.log(res)
+          $.each(res, function(i){
+            document.getElementById("view").innerHTML += "NIM : " + res[i].nim + 
+            "<br>" + "Nama : " + res[i].nama + 
+            "<br>" + "Alamat : " + res[i].alamat + 
+            "<br>" + "Prodi : " + res[i].prodi + 
+            "<br>" + "Fakultas : " + res[i].fakultas + "<br><br>" 
+          })
+        })
+      }
+    </script>
+</body>
+</html>
